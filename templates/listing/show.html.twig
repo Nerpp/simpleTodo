@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Listing
+{% endblock %}
+
+{% block body %}
+
+	<div class="container">
+		<div class="text-center">
+			<h1>{{ listing.name }}
+				Détails
+			</h1>
+		</div>
+
+		{% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+		<div class="">
+			{{ include('listing/_form.html.twig') }}
+		</div>
+		
+		<div class="d-grid gap-4 pt-3">
+			
+			{% for task in listing.fkTask %}
+				<div class="d-flex flex-column align-items-center d-grid gap-2">
+					<div class="">
+						{{ task.title }}
+					</div>
+					<div class="d-flex flex-row d-grid gap-2">
+						<div class="">
+							<a href="{{ path('app_task_edit', {'id': task.id}) }}" class="btn btn-primary">Edition Tache
+							</a>
+						</div>
+						<div class="">
+							{{ include('task/_switch_state_task_form.html.twig') }}
+						</div>
+					</div>
+					{% if task.state %}
+						<div class="">
+							<p>
+								<strong>Tache éffectué</strong>
+							</p>
+						</div>
+					{% else %}
+						<div class="">
+							<p>
+								<strong>Tache à finir</strong>
+							</p>
+						</div>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+		<div class="d-flex flex-row justify-content-end d-grid gap-2">
+			<div class="">
+				{{ include('task/_delete_all_task_form.html.twig') }}
+			</div>
+			<div class="">
+				<a href="{{ path('app_task_new', {'id': listing.id}) }}" class="btn btn-primary">Créer une nouvelle tache</a>
+			</div>
+		</div>
+		<div class="">
+			<a href="{{ path('app_index') }}">retour</a>
+		</div>
+	</div>
+{% endblock %}

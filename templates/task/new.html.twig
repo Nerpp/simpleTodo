@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Task
+{% endblock %}
+
+{% block body %}
+	<div class="container d-grid gap-3">
+		<div class="d-grid gap-3">
+			<div class="text-center">
+				<h1>Créer une nouvelle Tache</h1>
+			</div>
+			<div class="">
+				{{ include('task/_form.html.twig') }}
+			</div>
+			<div class="">
+				<a href="{{ path('app_listing_show', {'id': listing.id}) }}" class="btn btn-primary">retour</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

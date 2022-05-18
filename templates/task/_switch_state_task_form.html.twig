@@ -1,0 +1,4 @@
+<form method="post" action="{{ path('app_task_switch', {'id': task.id}) }}" onsubmit="return confirm('Etes vous sur de vouloir changer l\'state de cette task ?');">
+    <input type="hidden" name="_token" value="{{ csrf_token('switch' ~ task.id) }}">
+    <button class="btn btn-danger">Changement d'état</button>
+</form>

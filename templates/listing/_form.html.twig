@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+<div class="d-grid gap-2">
+    <div class="">
+        {{ form_errors(form.name) }}
+    </div>
+	<div class="">
+		{{ form_widget(form.name) }}
+	</div>
+	<div class="text-end">
+		{{ form_widget(form.save) }}
+	</div>
+</div>
+{{ form_end(form) }}
